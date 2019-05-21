@@ -14,6 +14,12 @@ module.exports = {
       balance: {
         type: Sequelize.INTEGER
       },
+      email: {
+        type: Sequelize.STRING
+      },
+      password: {
+        type: Sequelize.STRING
+      },
       petQuantity: {
         type: Sequelize.INTEGER
       },
