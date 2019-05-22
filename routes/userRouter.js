@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const {User} = require('../models')
+const bcrypt = require('bcrypt')
 
 router.get('/register', (req, res) => {
     res.render('registerUser.ejs', {
@@ -37,6 +38,36 @@ router.post('/register', (req, res) => {
     .catch(err => {
         res.send(err)
     })
+})
+
+router.get('/login', (req, res) => {
+    res.render('loginUser.ejs', {
+        sendDisplayError : req.query.errData
+    })
+})
+router.post('/login', (req, res) => {
+    User.findOne({
+        where : {
+            email : req.body.email
+        }
+    })
+    .then(user => {
+        if(user){
+            bcrypt.compare(req.body.password, user.password, function(err, sucess) {
+                if(sucess){
+                    // res.send('success')
+                    res.redirect('/test')
+
+                }else{
+                    let errm = 'your insert a wrong password'
+                    res.redirect(`/login?errData=${errm}`)
+                }
+            })
+        }
+    })
+})
+router.get('/test', (req, res) => {
+    res.render('sandbox.ejs')
 })
 
 module.exports = router
