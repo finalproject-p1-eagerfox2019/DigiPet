@@ -4,9 +4,16 @@ const Model = require('../models')
 
 
 router.get('/', (req, res) => {
-    res.render('home.ejs', {
-        sendDisplayError : req.query.displayError
+    res.render('home.ejs')
+})
+router.get('/main/:username', (req, res) => {
+    res.render('main.ejs', {
+        namaUser : req.params.username
     })
+})
+router.post('/main/:username', (req, res) => {
+    let picker = req.params.username
+    res.redirect(`/animal/pick/${picker}`)
 })
 // router.post('/home', (req, res) => {
 //     User.findAll({

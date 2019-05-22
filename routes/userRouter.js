@@ -56,7 +56,7 @@ router.post('/login', (req, res) => {
             bcrypt.compare(req.body.password, user.password, function(err, sucess) {
                 if(sucess){
                     // res.send('success')
-                    res.redirect('/test')
+                    res.redirect(`/home/main/${user.name}`)
 
                 }else{
                     let errm = 'your insert a wrong password'
