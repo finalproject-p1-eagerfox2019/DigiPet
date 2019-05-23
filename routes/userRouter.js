@@ -56,12 +56,14 @@ router.post('/login', (req, res) => {
             bcrypt.compare(req.body.password, user.password, function(err, sucess) {
                 if(sucess){
                     // res.send('success')
+                    req.session.isLogin = true
+                    req.session.username = user.name
                     res.redirect(`/home/main/${user.name}`)
-
                 }else{
                     let errm = 'your insert a wrong password'
                     res.redirect(`/login?errData=${errm}`)
                 }
+                console.log(req.session)
             })
         }
     })

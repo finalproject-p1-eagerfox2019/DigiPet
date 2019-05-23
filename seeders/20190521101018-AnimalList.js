@@ -3,27 +3,31 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
    return queryInterface.bulkInsert('Animals',[{
-        name: "Aero",
+        name: "Flareon",
         price: "10",
-        description : "",
+        image: "/flareon.gif",
+        description : "High Affinity with Fire Elements, tend to live in high temperature Area",
         createdAt: new Date(),
         updatedAt: new Date(),
       },{
         name: "Blitz",
         price: "15",
-        description : "",
+        image: "/jolteon.gif",
+        description : "High Affinity with Thunder Elements, rarely sighted",
         createdAt: new Date(),
         updatedAt: new Date(),
       },{
         name: "Leafy",
         price: "20",
-        description : "Living in the deep rain forest, ....",
+        image: "/leafeon.gif",
+        description : "High affinity with Nature Elements, usually found in the deep rain forest",
         createdAt: new Date(),
         updatedAt: new Date(),
       },{
         name: "Snowy",
         price: "25",
-        description : "Tend to live in ",
+        image: "/aqua.gif",
+        description : "High Affinity with Water Elements, tend to live in deep water ",
         createdAt: new Date(),
         updatedAt: new Date(),
       },

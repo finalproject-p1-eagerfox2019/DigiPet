@@ -30,22 +30,25 @@
   color: white;
 }</style>
 <body>
-    <h1>animal</h1>
+    <h1>Animal</h1>
     <table id="customers">
         <tr>
             <th>name</th>
+            <th>Animal</th>
             <th>price</th>
             <th>description</th>
             <th>Options</th>
         </tr>
-        <%dataAnimal.forEach(animal => { %>
+        <%dataAnimal.forEach((animal) => { %>
             <tr>
                 <td><%=animal.name%></td>
+                <td><img src=<%=animal.image%> style="width:140px;height:130px;border:0;" ></td>
                 <td><%=animal.price%></td>
                 <td><%=animal.description%></td>
                 <td>
-                    <form action="" method="POST">
-                        <button name="chosen" type="submit" value="<%=animal.id%>"><%=animal.id%></button>
+                    <form action="/animal/pick/<%=name%>" method="POST">
+                        <button id="chosen" type="submit" value="<%=animal.id%>">Choose</button>
+                        <!-- document.getElementById('chosen').setAttribute('buttonData','myData'); -->
                     </form>
                 </td>
     

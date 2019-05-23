@@ -7,7 +7,8 @@ router.get('/pick/:username', (req, res) => {
     Animal.findAll()
     .then(allAnimal => {
         res.render('animal.ejs', {
-            dataAnimal : allAnimal
+            dataAnimal : allAnimal,
+            name : req.params.username
         })
     })
     .catch(err => {
@@ -41,11 +42,48 @@ router.post('/pick/:username', (req, res) => {
     })
     .then(pet => {
         // res.redirect(`/home/play/${theOne.name}`)
-        res.send('terpilih')
+        res.redirect('/animal/play/Mikel/monster/')
+        // ${req.params.username}
+        // res.send('test')
     })
     .catch(err => {
         res.send(err)
     })
+
 })
+
+    router.get('/play/:username'), (req,res) =>{
+    User.findOne({
+        where : {
+            name : req.params.username
+        }
+    })
+    .then(userFound => {
+        // res.send(req.body.flareon)
+        return Pet.findOne({
+            where: {
+                userID : userFound.id
+            }
+        })
+        
+    })
+    .then(petFound => {
+        return Animal.findOne({
+            where: {
+                id : petFound.AnimalID
+            }
+        })
+    })
+    .then(animalFound => {
+        res.render('test.ejs', {
+            img: animalFound
+        })
+    })
+
+}
+
+    router.get('/animal/play/Mikel/monster/') , (req,res) =>{
+        res.render('test.ejs')
+    }
 
 module.exports = router

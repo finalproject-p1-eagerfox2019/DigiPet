@@ -4,8 +4,13 @@ const Model = require('../models')
 
 
 router.get('/', (req, res) => {
+	if(req.session.isLogin === undefined){
+        req.session.isLogin = false
+    }
+    console.log(req.session)
     res.render('home.ejs')
 })
+
 router.get('/main/:username', (req, res) => {
     res.render('main.ejs', {
         namaUser : req.params.username
