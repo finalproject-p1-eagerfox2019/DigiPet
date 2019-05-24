@@ -10,7 +10,7 @@ const middleware = require('./middleware/midle')
 const app = express()
 const port = 3000
 app.set('view engine', 'ejs')
-app.use(session({secret : 'digipet' ,cookies : {secure : true}}))
+app.use(session({secret : 'digipet' ,cookies : {secure : false}}))
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: false }))
 
