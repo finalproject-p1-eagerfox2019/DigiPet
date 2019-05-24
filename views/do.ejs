@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+img {
+    display: inline-block;
+}
+body {
+        width: 100%;
+        background-image: url('https://i.ibb.co/cQ3MpW1/spring-background.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+}
+h1 {
+    text-align: center;
+    color: black;
+    background-color: blanchedalmond;
+    font-size: 100px
+}
+#err {
+    color: red;
+    font-size: 100px
+}
+
+</style>
+<body style="height : 100%; width: 100%">
+        <%-include('./partials/navBar.ejs')%>
+    <h1>Treat <%=dataAnimal.name%></h1>
+
+    <img src="/img/<%=dataAnimal.image%>" alt="pet" style="width: 1500px;height: 1560px; border: 0; margin-top: -500px">
+    <h1 id="err"><%=err%></h1>
+    <%dataDoing.forEach(each => {%>
+        <form action="/game/<%=nama%>/<%=wot%>/<%=pet%>" method="POST">
+            <img src="<%=each.img%>" alt="image"/>
+            <button name="pick" type="submit" value="<%=each.id%>"><%=each.todo%></button>
+        </form>
+    <%})%>
+        <!-- <input type="submit" name="<%=dataDoing[0].todo%>" value="<%=dataDoing[0].todo%>">
+        <input type="submit" name="<%=dataDoing[1].todo%>" value="<%=dataDoing[1].todo%>">
+        <input type="submit" name="<%=dataDoing[2].todo%>" value="<%=dataDoing[2].todo%>">
+        <input type="submit" name="<%=dataDoing[3].todo%>" value="<%=dataDoing[3].todo%>">
+        <input type="submit" name="<%=dataDoing[4].todo%>" value="<%=dataDoing[4].todo%>"> -->
+        <!-- <a href=""><img src="/img/Pinap_Berry.png" alt="pinap"/></a> -->
+
+    <!-- <p>pinap berry</p>
+    <a href=""><img src="/img/Nanab_Berry.png" alt="pinap"/></a>
+    <p>nanab berry</p>
+    <a href=""><img src="/img/GO_Razz_Berry.png" alt="pinap"/></a>
+    <p>goRazz</p>
+    <a href="">go to walk</a>
+
+    <a href="">go to bath</a>
+    <a href="">joining contest</a> -->
+    
+    <!-- <h1>ceritanya nanti ada gambar binatangnya</h1> -->
+
+</body>
+</html>

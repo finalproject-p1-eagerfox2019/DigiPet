@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const Model = require('../models')
+const {Pet, User, Animal} = require('../models')
 
 
 router.get('/', (req, res) => {
@@ -48,5 +48,67 @@ router.post('/main/:username', (req, res) => {
 //         res.send(err)
 //     })
 // })
+router.get('/mvp', (req, res) => {
+    // let result = []
+    // let orang = 
+    // let hewan = 
+    // Pet.findAll()
+    // User.findAll({
+    //     include : {
+    //         model : Pet,
+    //         include : {
+    //             model : Animal
+    //         }
+    //     }
+    // })
+    // Pet.findAll()
+    // .then(allData => {
+    //     let result = []
+    //     allData.forEach(el => {
+    //         result.push(el.happiness)
+    //     });
+    //     res.send(result.sort())
+    //     res.render('mvp.ejs', {
+    //         theData : allData
+    //     })
+    // })
+    // Pet.findAll({
+    //     order : [['happiness', 'DESC']]
+    // })
+    // .then(allData => {
+    //     // let result = []
+    //     for(let i = 0; i < 3; i++){
+    //        result.push(allData[i])
+    //     }
+    //     // res.send(result)
+    //     return Animal.findAll({
+    //         where : {
+    //             id : [result[0].AnimalID, result[1].AnimalID, result[2].AnimalID]
+    //         }
+    //     })
+    // })
+    // .then(wow => {
+    //     return User.findAll({
+    //         where : {
+    //             id : [result[0].AnimalID, result[1].AnimalID, result[2].AnimalID]
+    //         }
+    //     })
+    // })
+    Pet.findAll({
+        include : [{
+            model : Animal
+        }, {model : User}]
+        , order : [['happiness', 'DESC']], limit : 3
+    })
+    .then(all => {
+        // res.send(all)
+        res.render('mvp.ejs', {
+            theData : all
+        })
+    })
+    .catch(err => {
+        res.send(err)
+    })
+})
 
 module.exports = router

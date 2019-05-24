@@ -30,12 +30,15 @@
   color: white;
 }</style>
 <body>
+        <%-include('./partials/navBar.ejs')%>
     <h1>animal</h1>
+    <%=errMsG%>
     <table id="customers">
         <tr>
             <th>name</th>
             <th>price</th>
             <th>description</th>
+            <th>image</th>
             <th>Options</th>
         </tr>
         <%dataAnimal.forEach(animal => { %>
@@ -43,9 +46,10 @@
                 <td><%=animal.name%></td>
                 <td><%=animal.price%></td>
                 <td><%=animal.description%></td>
+                <td><img src="/img/<%=animal.image%>" style="width: 140px;height: 130px;border: 0;" alt="animals"/></td>
                 <td>
-                    <form action="" method="POST">
-                        <button name="chosen" type="submit" value="<%=animal.id%>"><%=animal.id%></button>
+                    <form action="/animal/pick/<%=nama%>" method="POST">
+                        <button name="chosen" type="submit" value="<%=animal.id%>"><%=animal.name%></button>
                     </form>
                 </td>
     

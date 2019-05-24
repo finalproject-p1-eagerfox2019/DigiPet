@@ -33,9 +33,43 @@
         text-align: center
     }
     </style>
+    <style>
+            ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+          }
+          
+          li {
+            float: left;
+          }
+          
+          li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+          }
+          
+          /* Change the link color to #111 (black) on hover */
+          li a:hover {
+            background-color: #111;
+          }
+        </style>
+        <div>
+            <ul> 
+                <li><a href="/home">Home</a></li>
+                <li><a href="/animal/pick/<%=namaUser%>">All Animals</a></li>
+                <li><a href="/game/<%=namaUser%>">pet list</a></li>
+                <li><a href="/logout">logout</a></li>
+            </ul>
+        </div>
 </head>
 <body>
-    <%-include('./partials/navBar.ejs')%>
+    <!-- <%-include('./partials/navBar.ejs')%> -->
     <h1>Welcome to digi-pet <%=namaUser%></h1>
     <h4>you have to choose an animal to be your pet:</h4>
 

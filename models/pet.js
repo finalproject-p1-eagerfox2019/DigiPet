@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Pet.associate = function(models) {
     // associations can be defined here
-    Pet.belongsTo(models.User, {foreignKey: 'UserID'})
+    Pet.belongsTo(models.User, {foreignKey: 'userID'})
     Pet.belongsTo(models.Animal, {foreignKey : 'AnimalID'})
     //alternate ways ny pakai throught di kedua table (User and Animal , through Pet tapi ada weakness nya)
   };
