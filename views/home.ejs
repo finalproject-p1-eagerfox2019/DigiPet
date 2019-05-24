@@ -12,6 +12,18 @@
         background-size: cover;
         background-repeat: no-repeat;
     }
+    .container {
+    margin: auto;
+    width: 50%;
+    /* border: 3px solid green; */
+    padding: 10px;
+    }
+    #om {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    margin-left: 35%; 
+    }
     .button {
     width: 80px;
     display: inline-block;
@@ -26,6 +38,7 @@
     background-color: rgb(253, 156, 30);
     border: none;
     border-radius: 15px;
+    margin-left: 115%;
     }
 
     .button:hover {background-color: green}
@@ -38,8 +51,9 @@
 </head>
 <body>
     <%-include('./partials/navBar.ejs')%>
+    <img src="/img/logo.png" alt="holalogi" style="width : 500px" id="om"/>
     <div class="container">
-        <div class="button-login" style="margin-top: 40.5%; margin-left: 39.5%;">
+        <div class="button-login" style="display :inline-block ; margin-bottom: 0px; position: absolute">
             <a href=""></a>
                 <a href="/login" class="button" style="margin-right:5%;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Login</a>
                 <a href="/register" class="button">Register</a>

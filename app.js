@@ -3,14 +3,20 @@
 const User = require('./routes/userRouter.js')
 const Home = require('./routes/home.js')
 const Animal = require('./routes/animalRouter')
+const Game = require('./routes/gameRouter')
 const express = require('express')
+const session = require('express-session')
+const middleware = require('./middleware/midle')
 const app = express()
 const port = 3000
 app.set('view engine', 'ejs')
+app.use(session({secret : 'digipet' ,cookies : {secure : true}}))
+app.use(express.static('public'))
 app.use(express.urlencoded({ extended: false }))
 
 app.use('/', User)
 app.use('/home', Home)
-app.use('/animal', Animal)
+app.use('/animal', middleware, Animal)
+app.use('/game', middleware, Game)
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

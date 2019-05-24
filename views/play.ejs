@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+<body>
+        <%-include('./partials/navBar.ejs')%>
+        <a href="/animal/pick/<%=nama%>">go to shop</a>
+    <h1>tabel user</h1>
+    <table id="customers">
+        <tr>
+            <th>name User :</th>
+            <th>balance :</th>
+            <th>pets in house : </th>
+        </tr>
+        <tr>
+            <td><%=allData.name%></td>
+            <td><%=allData.balance%></td>
+            <td><%=allData.petQuantity%></td>
+        </tr>
+    </table>
+    <h1>pets</h1>
+    <table id="customers">
+        <tr>
+            <th>animal Type</th>
+            <th>animal level</th>
+            <th>animal exp</th>
+            <th>image</th>
+            <th>animal happiness</th>
+            <th>worth</th>
+            <th>Treat</th>
+        </tr>
+        <%allData.Pets.forEach((eachPet, idx) => {%>
+            <tr>
+                <td><%=eachPet.Animal.name%></td>
+                <td><%=eachPet.level%></td>
+                <td><%=eachPet.experience%></td>
+                <td><img src="/img/<%=eachPet.Animal.image%>" style="width: 140px;height: 130px;border: 0;" alt="animals"/></td>
+                <td><%=eachPet.happiness%></td>
+                <td><%=eachPet.priceValue%></td>
+                <td><a href="/game/<%=allData.name%>/<%=eachPet.Animal.id%>/<%=eachPet.id%>"</a>Do Something</a></td>
+
+            </tr>
+        <%})%>
+    </table>
+</body>
+</html>
