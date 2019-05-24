@@ -1,8 +1,8 @@
 function thisSesion(req, res, next){
-    if(req.session !== undefined){
+    if(req.session.user !== undefined){
         next()
     }else{
-        res.redirect('/home')
+        res.redirect('/')
     }
 }
 

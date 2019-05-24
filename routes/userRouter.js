@@ -82,9 +82,9 @@ router.post('/login', (req, res) => {
     })
     .then(user => {
         if(user){
-            req.session.user = {name : user.name, userId : user.id}
             bcrypt.compare(req.body.password, user.password, function(err, sucess) {
                 if(sucess){
+                    req.session.user = {name : user.name, userId : user.id}
                     // res.send('success')
                     res.redirect(`/home/main/${user.name}`)
 
